@@ -15,6 +15,11 @@ namespace Ex03.GarageLogic
         {
             m_MotorCycle = new Motorcycle(i_TypeOfLicense, i_EngineCapacity);
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0}, {1}", base.ToString(), m_MotorCycle.ToString());
+        }
     }
 
 }

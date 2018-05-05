@@ -27,6 +27,13 @@ namespace Ex03.GarageLogic
             {
                 throw new ValueOutOfRangeException(0, m_MaxBatteryTime-m_BatteryTime);
             }
+
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}, battety time: {1}, max batteryTime {2}"
+                , base.ToString(), m_BatteryTime, m_MaxBatteryTime);
         }
     }
 }
