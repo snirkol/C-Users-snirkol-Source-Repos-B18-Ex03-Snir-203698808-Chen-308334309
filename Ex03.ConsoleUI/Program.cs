@@ -55,11 +55,39 @@ namespace Ex03.ConsoleUI
                                     result = float.TryParse(Console.ReadLine(), out percentageOfEnergyRemaining);
                                 }
 
-                                garage.AddNewVehicle(lisenceNumber);
+                                Console.Write("Manufacturer Name: ");
+                                string manufacturerName = Console.ReadLine();
+                                Console.Write("Current Air Pressure: ");
+                                float currentAirPressure;
+                                result = float.TryParse(Console.ReadLine(), out currentAirPressure);
+
+                                while (!result)
+                                {
+                                    Console.Write("Invalid! Current Air Pressure: ");
+                                    result = float.TryParse(Console.ReadLine(), out currentAirPressure);
+                                }
+
+                                Console.Write("Owner Name: ");
+                                string ownerName = Console.ReadLine();
+
+                                Console.Write("Owner telephone: ");
+                                string ownerTelephone = Console.ReadLine();
+
+                                Console.Write("enter more details (split with space): ");
+                                string moreDetails = Console.ReadLine();
+
+                                garage.AddNewVehicle(vehicleType, lisenceNumber, modelName, percentageOfEnergyRemaining, currentAirPressure,
+                                    manufacturerName, ownerName, ownerTelephone, moreDetails);
                             }
-                            garage.ChangeVehicleRepairStatus(lisenceNumber, eRepairStatus.InProcess);
+
+                            else
+                            {
+                                garage.ChangeVehicleRepairStatus(lisenceNumber, eRepairStatus.InProcess);
+                            }
+
                             break;
                         }
+
                     case 2:
                         {
                             Console.WriteLine("if you want to filter results press status(InProgress/Fixed/Paid), to show all press other input");
