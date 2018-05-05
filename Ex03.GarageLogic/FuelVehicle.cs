@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    class FuelVehicle
+    class FuelVehicle : Vehicle
     {
         eTypeFuel m_TypeFuel;
         float m_CurrentFuelQuantity;
         float m_MaxFuelQuantity;
 
-        public FuelVehicle(eTypeFuel i_TypeFuel, float i_CurrentFuelQuantity, float i_MaxFuelQuantity)
+        public FuelVehicle(string i_LicencseNumber, eTypeFuel i_TypeFuel, 
+            float i_CurrentFuelQuantity, float i_MaxFuelQuantity) : base(i_LicencseNumber)
         {
             m_TypeFuel = i_TypeFuel;
             m_CurrentFuelQuantity = i_CurrentFuelQuantity;

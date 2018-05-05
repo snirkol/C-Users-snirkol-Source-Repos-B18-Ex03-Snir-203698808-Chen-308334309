@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    class ElectricVehicle
+    class ElectricVehicle : Vehicle
     {
         float m_BatteryTime;
         float m_MaxBatteryTime;
 
-        public ElectricVehicle(float i_BatteryTime, float i_MaxBatteryTime)
+        public ElectricVehicle(string i_LicencseNumber, float i_BatteryTime, float i_MaxBatteryTime) : base(i_LicencseNumber)
         {
             m_BatteryTime = i_BatteryTime;
             m_MaxBatteryTime = i_MaxBatteryTime;
