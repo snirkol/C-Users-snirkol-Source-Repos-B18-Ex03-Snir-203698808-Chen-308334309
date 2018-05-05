@@ -51,7 +51,7 @@ namespace Ex03.GarageLogic
 
             foreach (Vehicle currentVehicle in m_vehicleDictionary.Values)
             {
-                o_VehiclesDetailList.Add(currentVehicle.ToString());
+                o_VehiclesDetailList.Add(currentVehicle.m_LicenseNumber);
             }
 
             return o_VehiclesDetailList;
@@ -65,7 +65,7 @@ namespace Ex03.GarageLogic
             {
                 if(i_Status == currentVehicle.m_Status)
                 {
-                    o_VehiclesDetailList.Add(currentVehicle.ToString());
+                    o_VehiclesDetailList.Add(currentVehicle.m_LicenseNumber);
                 }
             }
 

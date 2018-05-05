@@ -9,7 +9,7 @@ namespace Ex03.GarageLogic
     class Vehicle
     {
         string m_ModelName;
-        string m_LicenseNumber;
+        public string m_LicenseNumber { get; }
         float m_PercentageOfEnergyRemaining;
         public ICollection<Tire> m_tires { get; set; }
         string m_OwnerName;

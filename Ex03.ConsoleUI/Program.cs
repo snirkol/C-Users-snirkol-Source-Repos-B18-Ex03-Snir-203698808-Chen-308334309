@@ -12,7 +12,7 @@ namespace Ex03.ConsoleUI
         public static void Main()
         {
             Garage garage = new Garage();
-            Console.WriteLine("Welcome to the garage\nSelect your option:");
+            Console.WriteLine("Welcome to the garage!");
             while (true)
             {
                 Console.WriteLine("1. Enter Vehicle to the garage");
@@ -22,24 +22,27 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine("5. Refule vehicle");
                 Console.WriteLine("6. Charge electrice vehicle");
                 Console.WriteLine("7. Vehicle detail");
+                Console.WriteLine("8. To exit");
+
+                Console.Write("Select your option: ");
 
                 int selectedOption;
                 bool resultOfParse = int.TryParse(Console.ReadLine(), out selectedOption);
                 while(!resultOfParse)
                 {
-                    Console.WriteLine("Invalid input\nSelect your option:");
+                    Console.WriteLine("Invalid input\nSelect your option: ");
                     resultOfParse = int.TryParse(Console.ReadLine(), out selectedOption);
                 }
                 switch(selectedOption)
                 {
                     case 1:
                         {
-                            Console.WriteLine("Enter lisenceNumber");
+                            Console.Write("LisenceNumber: ");
                             string lisenceNumber = Console.ReadLine();
                             bool isVehicleExist = garage.IsVehicleExist(lisenceNumber);
                             if(!isVehicleExist)
                             {
-                                Console.WriteLine("Enter details of vehicle");
+                                Console.Write("Details of vehicle: ");
                                 string vehicleDetails = Console.ReadLine();
                                 garage.AddNewVehicle(lisenceNumber);
                             }
@@ -81,109 +84,113 @@ namespace Ex03.ConsoleUI
 
                     case 3:
                         {
-                            Console.WriteLine("Enter lisence number and new status");
+                            Console.Write("Lisence number:");
                             string lisenceNumber = Console.ReadLine();
+                            Console.Write("New status:");
                             string newStatusString = Console.ReadLine();
                             eRepairStatus? newStatus = castStatus(newStatusString);
+                            bool isVehicleExist = garage.IsVehicleExist(lisenceNumber);
+
+                            while (!isVehicleExist)
+                            {
+                                Console.WriteLine("The license number is not exist in the garage, please enter again");
+                                lisenceNumber = Console.ReadLine();
+                                isVehicleExist = garage.IsVehicleExist(lisenceNumber);
+                            }
+
                             while (newStatus == null)
                             {
-                                Console.WriteLine("Invalid status, please enter InProgress/Fixed/Paid");
+                                Console.Write("Invalid status\nplease enter InProgress/Fixed/Paid: ");
                                 newStatusString = Console.ReadLine();
                                 newStatus = castStatus(newStatusString);
 
                             }
 
-                            bool isVehicleExist = garage.IsVehicleExist(lisenceNumber);
-                            if(isVehicleExist)
-                            {
-                                garage.ChangeVehicleRepairStatus(lisenceNumber, (eRepairStatus)newStatus);
-
-                            }
-                            else
-                            {
-                                Console.WriteLine("The license number is not exist in the garage");
-                            }
+                            garage.ChangeVehicleRepairStatus(lisenceNumber, (eRepairStatus)newStatus);
 
                             break;
                         }
 
                     case 4:
                         {
-                            Console.WriteLine("Enter vehicle's lisence number");
+                            Console.Write("Lisence number: ");
                             string lisenceNumber = Console.ReadLine();
                             bool isVehicleExist = garage.IsVehicleExist(lisenceNumber);
 
-                            if(isVehicleExist)
+                            while (!isVehicleExist)
                             {
-                                garage.BlowUpAllTireToMax(lisenceNumber);
+                                Console.Write("The license number is not exist in the garage\nLisence number:");
+                                lisenceNumber = Console.ReadLine();
+                                isVehicleExist = garage.IsVehicleExist(lisenceNumber);
                             }
 
-                            else
-                            {
-                                Console.WriteLine("The license number is not exist in the garage");
-                            }
+                            garage.BlowUpAllTireToMax(lisenceNumber);
 
                             break;
                         }
 
                     case 5:
                         {
-                            Console.WriteLine("Enter vehicle's lisence number, type of fuel(Octan95/Octan96/Octan98/Soler) and quantity to fill in liters");
+                            Console.Write("Lisence number: ");
                             string lisenceNumber = Console.ReadLine();
+                            Console.Write("Type of fuel (Octan95/Octan96/Octan98/Soler): ");
                             string typeFuelString = Console.ReadLine();
-                            eTypeFuel? typeFuel = caseTypeFuel(typeFuelString); 
+                            eTypeFuel? typeFuel = caseTypeFuel(typeFuelString);
+                            Console.Write("Quantity to fill in liters:");
                             float quantityOfFuel;
+                            bool result = float.TryParse(Console.ReadLine(), out quantityOfFuel);
 
                             bool isExistVehicle = garage.IsVehicleExist(lisenceNumber);
-                            if (isExistVehicle)
+                            while (!isExistVehicle)
                             {
-                                bool result = float.TryParse(Console.ReadLine(), out quantityOfFuel);
-                                while (!result)
-                                {
-                                    Console.WriteLine("Invalid quantity to fill, please enter again");
-                                    result = float.TryParse(Console.ReadLine(), out quantityOfFuel);
-                                }
-
-                                while (typeFuel == null)
-                                {
-                                    Console.WriteLine("Invalid type fuel, please enter Octan95/Octan96/Octan98/Soler");
-                                    typeFuelString = Console.ReadLine();
-                                    typeFuel = caseTypeFuel(typeFuelString);
-                                }
-
-                                 garage.RefuleVehicle(lisenceNumber, (eTypeFuel)typeFuel, quantityOfFuel);
+                                Console.Write("The license number is not exist in the garage\nLisence number:");
+                                lisenceNumber = Console.ReadLine();
+                                isExistVehicle = garage.IsVehicleExist(lisenceNumber);
                             }
-                            else
+
+                            while (!result)
                             {
-                                Console.WriteLine("The license number is not exist in the garage");
+                                Console.Write("Invalid quantity to fill, Quantity to fill in liters: ");
+                                result = float.TryParse(Console.ReadLine(), out quantityOfFuel);
                             }
+
+                            while (typeFuel == null)
+                            {
+                                Console.Write("Invalid type fuel, Type of fuel (Octan95/Octan96/Octan98/Soler): ");
+                                typeFuelString = Console.ReadLine();
+                                typeFuel = caseTypeFuel(typeFuelString);
+                            }
+
+                            garage.RefuleVehicle(lisenceNumber, (eTypeFuel)typeFuel, quantityOfFuel);
 
                             break;
+
                         }
+
 
                     case 6:
                         {
-                            Console.WriteLine("Enter vehicle's lisence number and time to charging");
+                            Console.Write("Lisence number: ");
                             string lisenceNumber = Console.ReadLine();
+                            Console.Write("Time to charging: ");
                             float timeToCharging;
                             bool result = float.TryParse(Console.ReadLine(), out timeToCharging);
 
                             bool isExistVehicle = garage.IsVehicleExist(lisenceNumber);
-                            if(isExistVehicle)
+                            while(!isExistVehicle)
                             {
-                                while (!result)
-                                {
-                                    Console.WriteLine("Invalid quantity to fill, please enter again");
-                                    result = float.TryParse(Console.ReadLine(), out timeToCharging);
-                                }
-
-                                garage.ChargeVehicle(lisenceNumber, timeToCharging);
+                                Console.Write("The license number is not exist in the garage\nLisence number:");
+                                lisenceNumber = Console.ReadLine();
+                                isExistVehicle = garage.IsVehicleExist(lisenceNumber);
                             }
 
-                            else
+                            while (!result)
                             {
-                                Console.WriteLine("The license number is not exist in the garage");
+                                Console.Write("Invalid quantity to fill, please enter again: ");
+                                result = float.TryParse(Console.ReadLine(), out timeToCharging);
                             }
+
+                            garage.ChargeVehicle(lisenceNumber, timeToCharging);
 
                             break;
                         }
@@ -193,6 +200,7 @@ namespace Ex03.ConsoleUI
                             break;
                         }
                 }
+                Console.WriteLine("");
             }
 
         }
