@@ -57,7 +57,7 @@ namespace Ex03.GarageLogic
             return o_VehiclesDetailList;
         }
 
-        public List<string> GetAllVehicles(eRepairStatus i_Status)
+        public List<string> GetAllVehiclesLisenceNumber(eRepairStatus i_Status)
         {
             List<string> o_VehiclesDetailList = new List<string>();
 
@@ -70,6 +70,11 @@ namespace Ex03.GarageLogic
             }
 
             return o_VehiclesDetailList;
+        }
+
+        public string GetVehicleDetail(string i_licenseNumber)
+        {
+            return m_vehicleDictionary[i_licenseNumber].ToString();
         }
 
         public void BlowUpAllTireToMax(string i_licenseNumber)

@@ -61,7 +61,7 @@ namespace Ex03.ConsoleUI
                             }
                             else
                             {
-                                allVehiclesInGarage = garage.GetAllVehicles((eRepairStatus)repairStatus);
+                                allVehiclesInGarage = garage.GetAllVehiclesLisenceNumber((eRepairStatus)repairStatus);
                             }
                             
 
