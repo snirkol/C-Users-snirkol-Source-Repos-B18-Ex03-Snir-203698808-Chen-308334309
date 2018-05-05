@@ -14,8 +14,7 @@ namespace Ex03.GarageLogic
         ICollection<Tire> m_tires;
         string m_OwnerName;
         string m_ownerTelephone;
-        eRepairStatus m_Status;
-
+        public eRepairStatus m_Status { get; set; }
         public Vehicle(string i_LicencseNumber)
         {
             this.m_LicenseNumber = i_LicencseNumber;
