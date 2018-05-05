@@ -10,5 +10,11 @@ namespace Ex03.GarageLogic
     {
         eColors m_Color;
         eNumberOfDoors m_NumOfDoors;
+
+        public Motorcar(eColors i_Color, eNumberOfDoors i_NumOfDoors)
+        {
+            m_Color = i_Color;
+            m_NumOfDoors = i_NumOfDoors;
+        }
     }
 }
