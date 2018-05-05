@@ -50,35 +50,17 @@ namespace Ex03.ConsoleUI
                         {
                             Console.WriteLine("if you want to filter results press status(InProgress/Fixed/Paid), to show all press other input");
                             string status = Console.ReadLine();
-                            eRepairStatus repairStatus;
+                            eRepairStatus? repairStatus = castStatus(status);
                             List<string> allVehiclesInGarage;
-                            switch(status)
+                            if(repairStatus == null)
                             {
-                                case "InProgress":
-                                    {
-                                        repairStatus = eRepairStatus.InProcess;
-                                        allVehiclesInGarage = garage.GetAllVehicles(repairStatus);
-                                        break;
-                                    }
-                                case "Fixed":
-                                    {
-                                        repairStatus = eRepairStatus.Fixed;
-                                        allVehiclesInGarage = garage.GetAllVehicles(repairStatus);
-                                        break;
-                                    }
-
-                                case "Paid":
-                                    {
-                                        repairStatus = eRepairStatus.Paid;
-                                        allVehiclesInGarage = garage.GetAllVehicles(repairStatus);
-                                        break;
-                                    }
-                                default:
-                                    {
-                                        allVehiclesInGarage = garage.GetAllVehicles();
-                                        break;
-                                    }
+                                allVehiclesInGarage = garage.GetAllVehicles();
                             }
+                            else
+                            {
+                                allVehiclesInGarage = garage.GetAllVehicles((eRepairStatus)repairStatus);
+                            }
+                            
 
                             if(allVehiclesInGarage.Count != 0)
                             {
@@ -101,11 +83,20 @@ namespace Ex03.ConsoleUI
                         {
                             Console.WriteLine("Enter lisence number and new status");
                             string lisenceNumber = Console.ReadLine();
-                            string newStatus = Console.ReadLine();
+                            string newStatusString = Console.ReadLine();
+                            eRepairStatus? newStatus = castStatus(newStatusString);
+                            while (newStatus == null)
+                            {
+                                Console.WriteLine("Invalid status, please enter InProgress/Fixed/Paid");
+                                newStatusString = Console.ReadLine();
+                                newStatus = castStatus(newStatusString);
+
+                            }
+
                             bool isVehicleExist = garage.IsVehicleExist(lisenceNumber);
                             if(isVehicleExist)
                             {
-                                garage.ChangeVehicleRepairStatus(lisenceNumber, newStatus);
+                                garage.ChangeVehicleRepairStatus(lisenceNumber, (eRepairStatus)newStatus);
 
                             }
                             else
@@ -140,7 +131,7 @@ namespace Ex03.ConsoleUI
                             Console.WriteLine("Enter vehicle's lisence number, type of fuel(Octan95/Octan96/Octan98/Soler) and quantity to fill in liters");
                             string lisenceNumber = Console.ReadLine();
                             string typeFuelString = Console.ReadLine();
-                            eTypeFuel typeFuel = 0; 
+                            eTypeFuel? typeFuel = caseTypeFuel(typeFuelString); 
                             float quantityOfFuel;
 
                             bool isExistVehicle = garage.IsVehicleExist(lisenceNumber);
@@ -153,45 +144,14 @@ namespace Ex03.ConsoleUI
                                     result = float.TryParse(Console.ReadLine(), out quantityOfFuel);
                                 }
 
-                                bool isValidTypeFuel = false;
-                                while (!isValidTypeFuel)
+                                while (typeFuel == null)
                                 {
-                                    switch (typeFuelString)
-                                    {
-                                        case "Octan95":
-                                            {
-                                                typeFuel = eTypeFuel.Octan95;
-                                                isValidTypeFuel = true;
-                                                break;
-                                            }
-                                        case "Octan96":
-                                            {
-                                                typeFuel = eTypeFuel.Octan96;
-                                                isValidTypeFuel = true;
-                                                break;
-                                            }
-                                        case "Octan98":
-                                            {
-                                                typeFuel = eTypeFuel.Octan98;
-                                                isValidTypeFuel = true;
-                                                break;
-                                            }
-                                        case "Soler":
-                                            {
-                                                typeFuel = eTypeFuel.Soler;
-                                                isValidTypeFuel = true;
-                                                break;
-                                            }
-                                        default:
-                                            {
-                                                Console.WriteLine("Invalid type fuel, please enter Octan95/Octan96/Octan98/Soler");
-                                                typeFuelString = Console.ReadLine();
-                                                break;
-                                            }
-                                    }
+                                    Console.WriteLine("Invalid type fuel, please enter Octan95/Octan96/Octan98/Soler");
+                                    typeFuelString = Console.ReadLine();
+                                    typeFuel = caseTypeFuel(typeFuelString);
                                 }
 
-                                 garage.RefuleVehicle(lisenceNumber, typeFuel, quantityOfFuel);
+                                 garage.RefuleVehicle(lisenceNumber, (eTypeFuel)typeFuel, quantityOfFuel);
                             }
                             else
                             {
@@ -234,6 +194,74 @@ namespace Ex03.ConsoleUI
                         }
                 }
             }
+
+        }
+
+        public static eRepairStatus? castStatus(string i_status)
+        {
+            eRepairStatus? o_repairStatus = null;
+
+            switch (i_status)
+            {
+                case "InProgress":
+                    {
+                        o_repairStatus = eRepairStatus.InProcess;
+                        break;
+                    }
+                case "Fixed":
+                    {
+                        o_repairStatus = eRepairStatus.Fixed;
+                        break;
+                    }
+
+                case "Paid":
+                    {
+                        o_repairStatus = eRepairStatus.Paid;
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            return o_repairStatus;
+        }
+
+        public static eTypeFuel? caseTypeFuel(string i_TypeFuel)
+        {
+            eTypeFuel? o_typeFuel;
+            switch (i_TypeFuel)
+            {
+                case "Octan95":
+                    {
+                        o_typeFuel = eTypeFuel.Octan95;
+                        break;
+                    }
+                case "Octan96":
+                    {
+                        o_typeFuel = eTypeFuel.Octan96;
+                        break;
+                    }
+                case "Octan98":
+                    {
+                        o_typeFuel = eTypeFuel.Octan98;
+                        break;
+                    }
+                case "Soler":
+                    {
+                        o_typeFuel = eTypeFuel.Soler;
+                        break;
+                    }
+                default:
+                    {
+                        o_typeFuel = null;
+                        break;
+                    }
+            }
+
+            return o_typeFuel;
+
         }
     }
 }
