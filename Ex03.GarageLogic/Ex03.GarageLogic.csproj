@@ -40,20 +40,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="eColors.cs" />
-    <Compile Include="ElectricMotorcar.cs" />
+    <Compile Include="ElectricCar.cs" />
     <Compile Include="ElectricMotorcycle.cs" />
     <Compile Include="ElectricVehicle.cs" />
     <Compile Include="eNumberOfDoors.cs" />
     <Compile Include="eRepairStatus .cs" />
     <Compile Include="eTypeFuel.cs" />
     <Compile Include="eTypeOfDriversLicense.cs" />
-    <Compile Include="FuelMotorcar.cs" />
+    <Compile Include="FuelCar.cs" />
     <Compile Include="FuelMotorcycle.cs" />
     <Compile Include="FuelVehicle.cs" />
     <Compile Include="Garage.cs" />
-    <Compile Include="Motorcar.cs" />
+    <Compile Include="Car.cs" />
     <Compile Include="Motorcycle.cs" />
     <Compile Include="Tire.cs" />
+    <Compile Include="Truck.cs" />
     <Compile Include="ValueOutOfRangeException.cs" />
     <Compile Include="VehicleGenerator.cs" />
     <Compile Include="Vehicle.cs" />
