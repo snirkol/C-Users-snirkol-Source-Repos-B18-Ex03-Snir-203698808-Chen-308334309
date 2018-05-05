@@ -14,10 +14,21 @@ namespace Ex03.GarageLogic
             m_vehicleDictionary = new Dictionary<string, Vehicle>();
         }
 
-        public void AddNewVehicle(string i_licenseNumber)
+        public bool AddNewVehicle(string i_licenseNumber)
         {
+            bool isSuccess = false;
+            Vehicle vehicle = null;
+
+            m_vehicleDictionary.TryGetValue(i_licenseNumber, out vehicle);
+
+            if(vehicle == null)
+            {
                 m_vehicleDictionary.Add(
                     i_licenseNumber, VehicleGenerator.CreateNewVehicle(i_licenseNumber));
+                isSuccess = true;
+            }
+
+            return isSuccess;
         }
     }
 }
