@@ -24,7 +24,8 @@ namespace Ex03.GarageLogic
 
         public void Refuel (float i_LiterQuantityToAdd, eTypeFuel i_TypeFuel)
         {
-            if (m_CurrentFuelQuantity + i_LiterQuantityToAdd <= m_MaxFuelQuantity)
+            if ((m_CurrentFuelQuantity + i_LiterQuantityToAdd <= m_MaxFuelQuantity) && 
+                (i_TypeFuel == m_TypeFuel))
             {
                 m_CurrentFuelQuantity += i_LiterQuantityToAdd;
             }
