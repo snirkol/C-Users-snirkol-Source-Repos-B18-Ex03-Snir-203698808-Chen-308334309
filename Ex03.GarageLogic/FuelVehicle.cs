@@ -39,5 +39,11 @@ namespace Ex03.GarageLogic
                 }
             }
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0}, fuel type: {1}, current fuel quantity: {2}, max fuel quantity: {3}"
+                , base.ToString(), m_TypeFuel.ToString(), m_CurrentFuelQuantity, m_MaxFuelQuantity);
+        }
     }
 }

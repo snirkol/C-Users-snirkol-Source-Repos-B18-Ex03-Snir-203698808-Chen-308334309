@@ -16,5 +16,11 @@ namespace Ex03.GarageLogic
             m_TypeOfLicense = i_TypeOfLicense;
             m_EngineCapacity = i_EngineCapacity;
         }
+
+        public override string ToString()
+        {
+            return string.Format("Driver licencnce type: {0}, EngineCapacity: {1}"
+                ,m_TypeOfLicense.ToString(), m_EngineCapacity );
+        }
     }
 }

@@ -15,5 +15,10 @@ namespace Ex03.GarageLogic
         {
             m_Motorcar = new Car(i_Color, i_NumOfDoors);
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0}, {1}", base.ToString(), m_Motorcar.ToString());
+        }
     }
 }

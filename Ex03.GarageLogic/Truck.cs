@@ -17,5 +17,11 @@ namespace Ex03.GarageLogic
             m_IsTrunkCooled = i_IsTrunkCooled;
             m_TrunckCapacity = i_TrunckCapacity;
         }
+
+        public override string ToString()
+        {
+            return String.Format("{0} , IsTrunkCooled = {1}, m_TrunckCapacity = {2} "
+                ,base.ToString(), m_IsTrunkCooled ,m_TrunckCapacity);
+        }
     }
 }

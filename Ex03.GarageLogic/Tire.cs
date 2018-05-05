@@ -14,5 +14,11 @@ namespace Ex03.GarageLogic
         
 
         public void Inflate(float i_QuantityOfAir) { }
+
+        public override string ToString()
+        {
+            return string.Format("Pressure {0}, Manufacturer Name: {1}"
+                , m_CurrentAirPressure, m_ManufacturerName);
+        }
     }
 }
