@@ -27,6 +27,10 @@ namespace Ex03.ConsoleUI
                 {
                     garage.AddNewVehicle(lisenceNumber);
                 }
+                catch (ArgumentException ae)
+                {
+                    Console.WriteLine("Vehicle already exist in the Garage!");
+                }
                 catch(Exception e)
                 {
                     Console.WriteLine("error!");

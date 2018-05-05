@@ -12,13 +12,12 @@ namespace Ex03.GarageLogic
         public Garage()
         {
             m_vehicleDictionary = new Dictionary<string, Vehicle>();
-
         }
 
         public void AddNewVehicle(string i_licenseNumber)
         {
-            m_vehicleDictionary.Add(
-                i_licenseNumber, VehicleGenerator.CreateNewVehicle(i_licenseNumber));
+                m_vehicleDictionary.Add(
+                    i_licenseNumber, VehicleGenerator.CreateNewVehicle(i_licenseNumber));
         }
     }
 }

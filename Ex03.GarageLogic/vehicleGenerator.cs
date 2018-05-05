@@ -8,6 +8,8 @@ namespace Ex03.GarageLogic
 {
     static class VehicleGenerator
     {
+
+        
         public static Vehicle CreateNewVehicle(string i_LicenseNumber)
         {
             if(i_LicenseNumber.Length < 7)
