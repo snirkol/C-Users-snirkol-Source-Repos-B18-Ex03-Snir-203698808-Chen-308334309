@@ -27,8 +27,17 @@ namespace Ex03.GarageLogic
             {
                 m_CurrentFuelQuantity += i_LiterQuantityToAdd;
             }
-
-            //TODO: else -> throw exception
+            else
+            {
+                if((m_CurrentFuelQuantity + i_LiterQuantityToAdd > m_MaxFuelQuantity))
+                {
+                    throw new ValueOutOfRangeException(0, m_MaxFuelQuantity - m_CurrentFuelQuantity);
+                }
+                else if(i_TypeFuel != m_TypeFuel)
+                {
+                    throw new ArgumentException("i_TypeFuel","Fuel type incorrect");
+                }
+            }
         }
     }
 }

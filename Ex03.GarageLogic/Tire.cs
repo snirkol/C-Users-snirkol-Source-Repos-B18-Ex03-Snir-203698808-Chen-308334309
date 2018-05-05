@@ -8,9 +8,10 @@ namespace Ex03.GarageLogic
 {
     class Tire
     {
-        string m_ManufacturerName;
-        float m_CurrentAirPressure;
-        float m_MaxAirPressure;
+        readonly string m_ManufacturerName;
+        public float m_CurrentAirPressure{ get; set; }
+        public float m_MaxAirPressure{ get;}
+        
 
         public void Inflate(float i_QuantityOfAir) { }
     }

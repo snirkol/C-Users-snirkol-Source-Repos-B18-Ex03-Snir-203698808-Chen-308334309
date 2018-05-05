@@ -43,7 +43,7 @@ namespace Ex03.ConsoleUI
                                 string vehicleDetails = Console.ReadLine();
                                 garage.AddNewVehicle(lisenceNumber);
                             }
-                            garage.enterVehicleToGarage(lisenceNumber);
+                            garage.ChangeVehicleRepairStatus(lisenceNumber, eRepairStatus.InProcess);
                             break;
                         }
                     case 2:
@@ -57,25 +57,25 @@ namespace Ex03.ConsoleUI
                                 case "InProgress":
                                     {
                                         repairStatus = eRepairStatus.InProcess;
-                                        allVehiclesInGarage = garage.GetAllVehiclesInGarage(repairStatus);
+                                        allVehiclesInGarage = garage.GetAllVehicles(repairStatus);
                                         break;
                                     }
                                 case "Fixed":
                                     {
                                         repairStatus = eRepairStatus.Fixed;
-                                        allVehiclesInGarage = garage.GetAllVehiclesInGarage(repairStatus);
+                                        allVehiclesInGarage = garage.GetAllVehicles(repairStatus);
                                         break;
                                     }
 
                                 case "Paid":
                                     {
                                         repairStatus = eRepairStatus.Paid;
-                                        allVehiclesInGarage = garage.GetAllVehiclesInGarage(repairStatus);
+                                        allVehiclesInGarage = garage.GetAllVehicles(repairStatus);
                                         break;
                                     }
                                 default:
                                     {
-                                        allVehiclesInGarage = garage.GetAllVehiclesInGarage();
+                                        allVehiclesInGarage = garage.GetAllVehicles();
                                         break;
                                     }
                             }
@@ -105,7 +105,7 @@ namespace Ex03.ConsoleUI
                             bool isVehicleExist = garage.IsVehicleExist(lisenceNumber);
                             if(isVehicleExist)
                             {
-                                garage.ChangeStatus(lisenceNumber, newStatus);
+                                garage.ChangeVehicleRepairStatus(lisenceNumber, newStatus);
 
                             }
                             else
@@ -124,7 +124,7 @@ namespace Ex03.ConsoleUI
 
                             if(isVehicleExist)
                             {
-                                garage.BlowUpAllTires(lisenceNumber);
+                                garage.BlowUpAllTireToMax(lisenceNumber);
                             }
 
                             else
@@ -140,7 +140,7 @@ namespace Ex03.ConsoleUI
                             Console.WriteLine("Enter vehicle's lisence number, type of fuel(Octan95/Octan96/Octan98/Soler) and quantity to fill in liters");
                             string lisenceNumber = Console.ReadLine();
                             string typeFuelString = Console.ReadLine();
-                            eTypeFuel typeFuel;
+                            eTypeFuel typeFuel = 0; 
                             float quantityOfFuel;
 
                             bool isExistVehicle = garage.IsVehicleExist(lisenceNumber);
@@ -191,7 +191,7 @@ namespace Ex03.ConsoleUI
                                     }
                                 }
 
-                                garage.Refuel(lisenceNumber, typeFuel, quantityOfFuel);
+                                 garage.RefuleVehicle(lisenceNumber, typeFuel, quantityOfFuel);
                             }
                             else
                             {
@@ -217,7 +217,7 @@ namespace Ex03.ConsoleUI
                                     result = float.TryParse(Console.ReadLine(), out timeToCharging);
                                 }
 
-                                garage.ChargeBattery(lisenceNumber, timeToCharging);
+                                garage.ChargeVehicle(lisenceNumber, timeToCharging);
                             }
 
                             else

@@ -32,10 +32,10 @@ namespace Ex03.GarageLogic
             return isExist;
         }
 
-        public void enterVehicleToGarage(string i_licenseNumber)
+        public void ChangeVehicleRepairStatus(string i_licenseNumber, eRepairStatus i_NewSatus)
         {
             Vehicle vehicle = m_vehicleDictionary[i_licenseNumber];
-            vehicle.m_Status = eRepairStatus.InProcess;
+            vehicle.m_Status = i_NewSatus;
         }
 
         public void AddNewVehicle(string i_licenseNumber)
@@ -43,6 +43,55 @@ namespace Ex03.GarageLogic
             Vehicle vehicle = VehicleGenerator.CreateNewVehicle(i_licenseNumber);
 
             m_vehicleDictionary.Add(i_licenseNumber, vehicle);
+        }
+
+        public List<string> GetAllVehicles()
+        {
+            List<string> o_VehiclesDetailList = new List<string>();
+
+            foreach (Vehicle currentVehicle in m_vehicleDictionary.Values)
+            {
+                o_VehiclesDetailList.Add(currentVehicle.ToString());
+            }
+
+            return o_VehiclesDetailList;
+        }
+
+        public List<string> GetAllVehicles(eRepairStatus i_Status)
+        {
+            List<string> o_VehiclesDetailList = new List<string>();
+
+            foreach (Vehicle currentVehicle in m_vehicleDictionary.Values)
+            {
+                if(i_Status == currentVehicle.m_Status)
+                {
+                    o_VehiclesDetailList.Add(currentVehicle.ToString());
+                }
+            }
+
+            return o_VehiclesDetailList;
+        }
+
+        public void BlowUpAllTireToMax(string i_licenseNumber)
+        {
+            var Tires = m_vehicleDictionary[i_licenseNumber].m_tires;
+
+            foreach (Tire currentTire in Tires)
+            {
+                currentTire.m_CurrentAirPressure = currentTire.m_MaxAirPressure;
+            }
+        }
+
+        public void RefuleVehicle(string i_licenseNumber, eTypeFuel i_fuelType, float i_LiterQuantity)
+        {
+            FuelVehicle fuelVehicle = ((FuelVehicle)m_vehicleDictionary[i_licenseNumber]);
+            fuelVehicle.Refuel(i_LiterQuantity, i_fuelType);
+        }
+
+        public void ChargeVehicle(string i_licenseNumber, float i_TimeToCharge)
+        {
+            ElectricVehicle electricVehicle = ((ElectricVehicle)m_vehicleDictionary[i_licenseNumber]);
+            electricVehicle.ChargeBattery(i_TimeToCharge);
         }
     }
 }
