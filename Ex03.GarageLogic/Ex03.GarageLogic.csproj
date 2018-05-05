@@ -42,10 +42,12 @@
     <Compile Include="eColors.cs" />
     <Compile Include="eNumberOfDoors.cs" />
     <Compile Include="eRepairStatus .cs" />
+    <Compile Include="eTypeFuel.cs" />
     <Compile Include="eTypeOfDriversLicense.cs" />
     <Compile Include="Garage.cs" />
     <Compile Include="Motorcar.cs" />
     <Compile Include="Motorcycle.cs" />
+    <Compile Include="FuelMotorcar.cs" />
     <Compile Include="Tire.cs" />
     <Compile Include="ValueOutOfRangeException.cs" />
     <Compile Include="VehicleGenerator.cs" />
