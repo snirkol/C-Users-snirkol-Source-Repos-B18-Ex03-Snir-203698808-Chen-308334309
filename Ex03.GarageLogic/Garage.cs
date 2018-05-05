@@ -38,11 +38,15 @@ namespace Ex03.GarageLogic
             vehicle.m_Status = i_NewSatus;
         }
 
-        public void AddNewVehicle(string i_licenseNumber)
+        public void AddNewVehicle(string i_Type, string i_LicenseNumber, string i_ModelName,
+            float i_PercentageOfEnergyRemaining, float i_TiresPressure, string i_OwnerName, string i_OwnerTelephone,
+            string i_ManufacturerName, string i_OtherDetails)
         {
-            Vehicle vehicle = VehicleGenerator.CreateNewVehicle(i_licenseNumber);
+            Vehicle vehicle = VehicleGenerator.CreateNewVehicle(i_Type, i_LicenseNumber, i_ModelName,
+            i_PercentageOfEnergyRemaining, i_TiresPressure, i_OwnerName, i_OwnerTelephone, i_ManufacturerName,
+            i_OtherDetails);
 
-            m_vehicleDictionary.Add(i_licenseNumber, vehicle);
+            m_vehicleDictionary.Add(i_LicenseNumber, vehicle);
         }
 
         public List<string> GetAllVehiclesLisenceNumber()
