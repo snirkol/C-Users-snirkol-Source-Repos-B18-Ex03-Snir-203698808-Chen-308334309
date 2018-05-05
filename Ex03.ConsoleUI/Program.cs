@@ -197,6 +197,7 @@ namespace Ex03.ConsoleUI
 
                     case 7:
                         {
+
                             break;
                         }
                 }
@@ -205,7 +206,7 @@ namespace Ex03.ConsoleUI
 
         }
 
-        public static eRepairStatus? castStatus(string i_status)
+        private static eRepairStatus? castStatus(string i_status)
         {
             eRepairStatus? o_repairStatus = null;
 
@@ -236,7 +237,7 @@ namespace Ex03.ConsoleUI
             return o_repairStatus;
         }
 
-        public static eTypeFuel? caseTypeFuel(string i_TypeFuel)
+        private static eTypeFuel? caseTypeFuel(string i_TypeFuel)
         {
             eTypeFuel? o_typeFuel;
             switch (i_TypeFuel)
