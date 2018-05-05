@@ -14,6 +14,11 @@ namespace Ex03.GarageLogic
 
         public Tire(string i_ManufacturerName, float i_CurrentAirPressure, float i_MaxAirPressure)
         {
+            if(i_CurrentAirPressure > i_MaxAirPressure)
+            {
+                throw new ValueOutOfRangeException(0, i_MaxAirPressure);
+            }
+
             m_ManufacturerName = i_ManufacturerName;
             m_CurrentAirPressure = i_CurrentAirPressure;
             m_MaxAirPressure = i_MaxAirPressure;

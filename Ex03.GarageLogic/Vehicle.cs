@@ -28,7 +28,7 @@ namespace Ex03.GarageLogic
             m_Status = eRepairStatus.InProcess;
             m_Tires = new List<Tire>(i_NumOfTires);
 
-            for(int i=0; i < i_NumOfTires; i_NumOfTires++)
+            for(int i=0; i < i_NumOfTires; i++)
             {
                 m_Tires.Add(new Tire(i_ManufacturerName, i_CurrentAirPressure, i_MaxAirPressure));
             }
@@ -49,7 +49,7 @@ namespace Ex03.GarageLogic
             return string.Format("Model Name: {0}, License number: {1}," +
                 " percentage of entergy remaining: {2}, owner name: {3}, owner telephone: {4}," +
                 "repair status: {5}, tire: {6} ",m_ModelName, m_LicenseNumber,
-                m_PercentageOfEnergyRemaining, m_OwnerName, m_OwnerTelephone, m_Status, m_Tires.ToString());
+                m_PercentageOfEnergyRemaining, m_OwnerName, m_OwnerTelephone, m_Status, tireCollectionToString());
         }
     }
 }

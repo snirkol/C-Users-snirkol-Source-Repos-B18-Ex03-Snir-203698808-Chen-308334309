@@ -14,12 +14,18 @@ namespace Ex03.GarageLogic
         {
             Vehicle vehicle = null;
 
-            switch (i_Type)
+            switch (i_Type.ToLower())
             {
                 case "truck":
                     {
                         vehicle = createTruck(i_LicenseNumber, i_ModelName, i_PercentageOfEnergyRemaining,
                             i_TiresPressure, i_OwnerName, i_OwnerTelephone, i_ManufacturerName, i_OtherDetails);
+
+                        break;
+                    }
+                default:
+                    {
+                        throw new ArgumentException();
 
                         break;
                     }
