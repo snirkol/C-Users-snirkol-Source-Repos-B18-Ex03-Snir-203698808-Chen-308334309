@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    static class vehicleGenerator
+    static class VehicleGenerator
     {
         public static Vehicle CreateNewVehicle(string i_LicenseNumber)
         {

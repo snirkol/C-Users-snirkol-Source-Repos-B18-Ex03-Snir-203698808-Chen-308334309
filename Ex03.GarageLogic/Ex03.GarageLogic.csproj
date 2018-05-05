@@ -41,7 +41,7 @@
   <ItemGroup>
     <Compile Include="Garage.cs" />
     <Compile Include="Tire.cs" />
-    <Compile Include="vehicleGenerator.cs" />
+    <Compile Include="VehicleGenerator.cs" />
     <Compile Include="Vehicle.cs" />
   </ItemGroup>
   <ItemGroup>
