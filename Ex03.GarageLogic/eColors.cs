@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    class motorcycle
+    enum eColors
     {
-        eTypeOfDriversLicense m_TypeOfLicense;
-        int m_EngineCapacity;
+        Gray,
+        Blue,
+        White,
+        Black
     }
 }
