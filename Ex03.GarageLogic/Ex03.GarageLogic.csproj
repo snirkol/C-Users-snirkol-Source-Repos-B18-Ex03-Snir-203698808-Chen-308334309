@@ -40,7 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="eColors.cs" />
-    <Compile Include="ElectricMotorcar.cs" />
     <Compile Include="eNumberOfDoors.cs" />
     <Compile Include="eRepairStatus .cs" />
     <Compile Include="eTypeOfDriversLicense.cs" />
