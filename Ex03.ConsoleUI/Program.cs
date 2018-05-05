@@ -26,7 +26,6 @@ namespace Ex03.ConsoleUI
                     Console.WriteLine("error!");
                 }
             }
-            Console.ReadLine();
         }
     }
 }
