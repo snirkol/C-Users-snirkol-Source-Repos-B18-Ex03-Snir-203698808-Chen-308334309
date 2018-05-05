@@ -12,6 +12,9 @@ namespace Ex03.GarageLogic
         string m_LicenseNumber;
         float m_PercentageOfEnergyRemaining;
         ICollection<Tire> m_tires;
+        string m_OwnerName;
+        string m_ownerTelephone;
+        eRepairStatus m_Status;
 
         public Vehicle(string i_LicencseNumber)
         {
