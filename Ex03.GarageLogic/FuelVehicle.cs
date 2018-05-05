@@ -12,8 +12,10 @@ namespace Ex03.GarageLogic
         float m_CurrentFuelQuantity;
         float m_MaxFuelQuantity;
 
-        public FuelVehicle(string i_LicencseNumber, eTypeFuel i_TypeFuel, 
-            float i_CurrentFuelQuantity, float i_MaxFuelQuantity) : base(i_LicencseNumber)
+        public FuelVehicle(string i_LicencseNumber, string i_ModelName, float i_PercentageOfEnergyRemaining,
+            string i_OwnerName, string i_OwnerTelephone, int i_NumOfTires, string i_ManufacturerName, float i_CurrentAirPressure, float i_MaxAirPressure, eTypeFuel i_TypeFuel, 
+            float i_CurrentFuelQuantity, float i_MaxFuelQuantity) : base(i_LicencseNumber, i_ModelName, i_PercentageOfEnergyRemaining, i_OwnerName, 
+                i_OwnerTelephone, i_NumOfTires, i_ManufacturerName, i_CurrentAirPressure, i_MaxAirPressure)
         {
             m_TypeFuel = i_TypeFuel;
             m_CurrentFuelQuantity = i_CurrentFuelQuantity;

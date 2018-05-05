@@ -42,8 +42,19 @@ namespace Ex03.ConsoleUI
                             bool isVehicleExist = garage.IsVehicleExist(lisenceNumber);
                             if(!isVehicleExist)
                             {
-                                Console.Write("Details of vehicle: ");
-                                string vehicleDetails = Console.ReadLine();
+                                Console.Write("Type: ");
+                                string vehicleType = Console.ReadLine();
+                                Console.Write("Model Name: ");
+                                string modelName = Console.ReadLine();
+                                Console.Write("Percentage Of Energy Remaining: ");
+                                float percentageOfEnergyRemaining;
+                                bool result = float.TryParse(Console.ReadLine(), out percentageOfEnergyRemaining);
+                                while (!result)
+                                {
+                                    Console.Write("Invalid! percentage Of Energy Remaining: ");
+                                    result = float.TryParse(Console.ReadLine(), out percentageOfEnergyRemaining);
+                                }
+
                                 garage.AddNewVehicle(lisenceNumber);
                             }
                             garage.ChangeVehicleRepairStatus(lisenceNumber, eRepairStatus.InProcess);
@@ -57,7 +68,7 @@ namespace Ex03.ConsoleUI
                             List<string> allVehiclesInGarage;
                             if(repairStatus == null)
                             {
-                                allVehiclesInGarage = garage.GetAllVehicles();
+                                allVehiclesInGarage = garage.GetAllVehiclesLisenceNumber();
                             }
                             else
                             {
@@ -197,7 +208,23 @@ namespace Ex03.ConsoleUI
 
                     case 7:
                         {
+                            Console.Write("Lisence number: ");
+                            string lisenceNumber = Console.ReadLine();
+                            bool isExistVehicle = garage.IsVehicleExist(lisenceNumber);
+                            while (!isExistVehicle)
+                            {
+                                Console.Write("The license number is not exist in the garage\nLisence number:");
+                                lisenceNumber = Console.ReadLine();
+                                isExistVehicle = garage.IsVehicleExist(lisenceNumber);
+                            }
 
+                            string vehicleDetails = garage.GetVehicleDetail(lisenceNumber);
+                            Console.WriteLine(vehicleDetails);
+                            break;
+                        }
+
+                    case 8:
+                        {
                             break;
                         }
                 }

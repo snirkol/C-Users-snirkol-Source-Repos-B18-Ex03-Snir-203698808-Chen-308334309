@@ -45,7 +45,7 @@ namespace Ex03.GarageLogic
             m_vehicleDictionary.Add(i_licenseNumber, vehicle);
         }
 
-        public List<string> GetAllVehicles()
+        public List<string> GetAllVehiclesLisenceNumber()
         {
             List<string> o_VehiclesDetailList = new List<string>();
 
@@ -79,7 +79,7 @@ namespace Ex03.GarageLogic
 
         public void BlowUpAllTireToMax(string i_licenseNumber)
         {
-            var Tires = m_vehicleDictionary[i_licenseNumber].m_tires;
+            var Tires = m_vehicleDictionary[i_licenseNumber].m_Tires;
 
             foreach (Tire currentTire in Tires)
             {

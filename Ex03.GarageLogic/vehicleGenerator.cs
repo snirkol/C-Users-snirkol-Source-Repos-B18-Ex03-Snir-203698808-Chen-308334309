@@ -10,7 +10,7 @@ namespace Ex03.GarageLogic
     {
         public static Vehicle CreateNewVehicle(string i_LicenseNumber)
         {
-            Vehicle newVehicle = new Vehicle(i_LicenseNumber);
+            Vehicle newVehicle = null;
             return newVehicle; 
         }
     }
