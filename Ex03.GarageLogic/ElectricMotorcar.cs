@@ -8,29 +8,14 @@ namespace Ex03.GarageLogic
 {
     class ElectricMotorcar : Vehicle
     {
-        float m_BatteryTime;
-        float m_MaxBatteryTime;
         Motorcar m_Motorcar;
+        ElectricVehicle m_ElectricVehicle;
 
         public ElectricMotorcar(string i_LicenseNumber, float i_BatteryTime, float i_MaxBatteryTime,
             eColors i_Color, eNumberOfDoors i_NumOfDoors) : base(i_LicenseNumber)
         {
-            m_BatteryTime = i_BatteryTime;
-            m_MaxBatteryTime = i_MaxBatteryTime;
+            m_ElectricVehicle = new ElectricVehicle(i_BatteryTime, i_MaxBatteryTime);
             m_Motorcar = new Motorcar (i_Color, i_NumOfDoors);
-        }
-
-        public void ChargeBattery(float i_TimeToCharge)
-        {
-            if (m_BatteryTime + i_TimeToCharge <= m_MaxBatteryTime)
-            {
-                m_BatteryTime += i_TimeToCharge;
-            }
-            else
-            {
-                throw new ValueOutOfRangeException(0, m_MaxBatteryTime);
-            }
-
         }
     }
 }

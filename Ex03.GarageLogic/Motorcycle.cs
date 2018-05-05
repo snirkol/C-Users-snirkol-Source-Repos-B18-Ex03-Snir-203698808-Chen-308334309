@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    class motorcycle
+    class Motorcycle
     {
         eTypeOfDriversLicense m_TypeOfLicense;
         int m_EngineCapacity;
+
+        public Motorcycle(eTypeOfDriversLicense i_TypeOfLicense, int i_EngineCapacity)
+        {
+            m_TypeOfLicense = i_TypeOfLicense;
+            m_EngineCapacity = i_EngineCapacity;
+        }
     }
 }
