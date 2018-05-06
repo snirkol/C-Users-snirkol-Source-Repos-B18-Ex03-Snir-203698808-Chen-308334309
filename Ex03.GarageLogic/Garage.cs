@@ -102,5 +102,77 @@ namespace Ex03.GarageLogic
             ElectricVehicle electricVehicle = ((ElectricVehicle)m_vehicleDictionary[i_licenseNumber]);
             electricVehicle.ChargeBattery(i_TimeToCharge);
         }
+
+        public static eColors CastColor(string i_DoorColor)
+        {
+            eColors o_Color;
+
+            switch (i_DoorColor.ToLower())
+            {
+                case "gray":
+                    {
+                        o_Color = eColors.Gray;
+                        break;
+                    }
+                case "blue":
+                    {
+                        o_Color = eColors.Blue;
+                        break;
+                    }
+
+                case "black":
+                    {
+                        o_Color = eColors.Black;
+                        break;
+                    }
+                case "white":
+                    {
+                        o_Color = eColors.White;
+                        break;
+                    }
+                default:
+                    {
+                        throw new InvalidCastException();
+                    }
+            }
+
+            return o_Color;
+        }
+
+        public static eNumberOfDoors castNumberOfDoor(string i_NumberOfDoors)
+        {
+            eNumberOfDoors o_NumberOfDoors;
+            
+            switch (i_NumberOfDoors.ToLower())
+            {
+                case "2":
+                    {
+                        o_NumberOfDoors = eNumberOfDoors.Two;
+                        break;
+                    }
+                case "3":
+                    {
+                        o_NumberOfDoors = eNumberOfDoors.Three;
+                        break;
+                    }
+
+                case "4":
+                    {
+                        o_NumberOfDoors = eNumberOfDoors.Four;
+                        break;
+                    }
+                case "5":
+                    {
+                        o_NumberOfDoors = eNumberOfDoors.Five;
+                        break;
+                    }
+                default:
+                    {
+                        throw new InvalidCastException();
+                    }
+            }
+
+            return o_NumberOfDoors;
+        }
     }
 }

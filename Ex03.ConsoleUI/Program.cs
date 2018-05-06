@@ -90,7 +90,7 @@ namespace Ex03.ConsoleUI
 
                     case 2:
                         {
-                            Console.WriteLine("if you want to filter results press status(InProgress/Fixed/Paid), to show all press other input");
+                            Console.WriteLine("if you want to filter results enter status(InProgress/Fixed/Paid), to show all enter input");
                             string status = Console.ReadLine();
                             eRepairStatus? repairStatus = castStatus(status);
                             List<string> allVehiclesInGarage;
@@ -115,7 +115,7 @@ namespace Ex03.ConsoleUI
 
                             else
                             {
-                                Console.WriteLine("There is no vehicles in the garage");
+                                Console.WriteLine("There is no vehicles to show");
                             }
 
                             break;

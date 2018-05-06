@@ -23,11 +23,16 @@ namespace Ex03.GarageLogic
 
                         break;
                     }
+
+                case "fuelcar":
+                    {
+                        vehicle = createFuelCar(i_LicenseNumber, i_ModelName, i_PercentageOfEnergyRemaining,
+                            i_TiresPressure, i_OwnerName, i_OwnerTelephone, i_ManufacturerName, i_OtherDetails);
+                        break;
+                    } 
                 default:
                     {
                         throw new ArgumentException();
-
-                        break;
                     }
             }
             //Vehicle newVehicle = new Vehicle(i_LicenseNumber);
@@ -35,6 +40,30 @@ namespace Ex03.GarageLogic
 
             return vehicle;
         }
+
+        private static Vehicle createFuelCar(string i_LicenseNumber, string i_ModelName,
+            float i_PercentageOfEnergyRemaining, float i_TiresPressure,string i_OwnerName,
+            string i_OwnerTelephone, string i_ManufacturerName, string i_OtherDetails)
+        {
+            string[] otherDetails = i_OtherDetails.Split(' ');
+            float currentFuelQuantity;
+            eColors doorsColor = Garage.CastColor(otherDetails[1]);
+            eNumberOfDoors numberOfDoor= Garage.castNumberOfDoor(otherDetails[2]);
+
+            //castColor and castNumberOfDoor method alredy throw exception.
+            //no need to chek again
+            if(!float.TryParse(otherDetails[0], out currentFuelQuantity))
+            {
+                throw new ArgumentException();
+            }
+
+            FuelCar fuelCar = new FuelCar(i_LicenseNumber, i_ModelName, i_PercentageOfEnergyRemaining,
+                i_OwnerName, i_OwnerTelephone, i_ModelName, i_TiresPressure,
+                currentFuelQuantity, doorsColor, numberOfDoor);
+
+            return fuelCar;
+        }
+
 
         private static Vehicle createTruck(string i_LicenseNumber, string i_ModelName,
             float i_PercentageOfEnergyRemaining, float i_TiresPressure,string i_ManufacturerName, string i_OwnerName,
