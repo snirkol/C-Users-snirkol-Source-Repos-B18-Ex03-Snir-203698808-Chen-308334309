@@ -15,10 +15,12 @@ namespace Ex03.GarageLogic
         const float k_MaxFuelQuantity = 6;
 
 
-        public FuelMotorcycle(string i_LicenseNumber, string i_ModelName, float i_PercentageOfEnergyRemaining, string i_OwnerName, string i_OwnerTelephone, 
-            string i_ManufacturerName, float i_CurrentAirPressure,  eTypeOfDriversLicense i_TypeOfLicense, int i_EngineCapacity, eTypeFuel i_TypeFuel, 
-            float i_CurrentFuelQuantity) : base(i_LicenseNumber, i_ModelName, i_PercentageOfEnergyRemaining, i_OwnerName, i_OwnerTelephone, k_NumOfTires, 
-                i_ManufacturerName, i_CurrentAirPressure, k_MaxAirPressure, k_TypeFuel, i_CurrentFuelQuantity, k_MaxFuelQuantity)
+        public FuelMotorcycle(string i_LicenseNumber, string i_ModelName, float i_PercentageOfEnergyRemaining,
+            string i_OwnerName,string i_OwnerTelephone, string i_ManufacturerName, float i_CurrentAirPressure,
+            eTypeOfDriversLicense i_TypeOfLicense, int i_EngineCapacity, float i_CurrentFuelQuantity)
+            : base(i_LicenseNumber, i_ModelName, i_PercentageOfEnergyRemaining, i_OwnerName, i_OwnerTelephone,
+                  k_NumOfTires, i_ManufacturerName, i_CurrentAirPressure, k_MaxAirPressure, k_TypeFuel,
+                  i_CurrentFuelQuantity, k_MaxFuelQuantity)
         {
             m_MotorCycle = new Motorcycle(i_TypeOfLicense, i_EngineCapacity);
         }

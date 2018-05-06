@@ -55,8 +55,8 @@ namespace Ex03.ConsoleUI
                                     result = float.TryParse(Console.ReadLine(), out percentageOfEnergyRemaining);
                                 }
 
-                                Console.Write("Manufacturer Name: ");
-                                string manufacturerName = Console.ReadLine();
+                                Console.Write("Tires Manufacturer Name: ");
+                                string tiresManufacturerName = Console.ReadLine();
                                 Console.Write("Current Air Pressure: ");
                                 float currentAirPressure;
                                 result = float.TryParse(Console.ReadLine(), out currentAirPressure);
@@ -76,8 +76,23 @@ namespace Ex03.ConsoleUI
                                 Console.Write("enter more details (split with space): ");
                                 string moreDetails = Console.ReadLine();
 
-                                garage.AddNewVehicle(vehicleType, lisenceNumber, modelName, percentageOfEnergyRemaining, currentAirPressure,
-                                    manufacturerName, ownerName, ownerTelephone, moreDetails);
+                                try
+                                {
+                                    garage.AddNewVehicle(vehicleType, lisenceNumber, modelName, percentageOfEnergyRemaining, currentAirPressure,
+                                        tiresManufacturerName, ownerName, ownerTelephone, moreDetails);
+                                }
+                                catch(InvalidCastException ive)
+                                {
+                                    Console.WriteLine(ive.ToString());
+                                }
+                                catch(ArgumentOutOfRangeException auore)
+                                {
+                                    Console.WriteLine(auore.ToString());
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine(e.ToString());
+                                }
                             }
 
                             else

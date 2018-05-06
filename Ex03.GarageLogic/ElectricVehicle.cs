@@ -11,9 +11,11 @@ namespace Ex03.GarageLogic
         float m_BatteryTime;
         float m_MaxBatteryTime;
 
-        public ElectricVehicle(string i_LicencseNumber, string i_ModelName, float i_PercentageOfEnergyRemaining, string i_OwnerName, string i_OwnerTelephone, 
-            int i_NumOfTires, string i_ManufacturerName, float i_CurrentAirPressure, float i_MaxAirPressure, float i_BatteryTime, float i_MaxBatteryTime) : 
-            base(i_LicencseNumber, i_ModelName, i_PercentageOfEnergyRemaining, i_OwnerName, i_OwnerTelephone, i_NumOfTires, i_ManufacturerName, i_CurrentAirPressure, i_MaxAirPressure)            
+        public ElectricVehicle(string i_LicencseNumber, string i_ModelName, float i_PercentageOfEnergyRemaining,
+            string i_OwnerName, string i_OwnerTelephone, int i_NumOfTires, string i_ManufacturerName, 
+            float i_CurrentAirPressure, float i_MaxAirPressure, float i_BatteryTime, float i_MaxBatteryTime) : 
+            base(i_LicencseNumber, i_ModelName, i_PercentageOfEnergyRemaining, i_OwnerName, i_OwnerTelephone,
+                i_NumOfTires, i_ManufacturerName, i_CurrentAirPressure, i_MaxAirPressure)            
         {
             m_BatteryTime = i_BatteryTime;
             m_MaxBatteryTime = i_MaxBatteryTime;

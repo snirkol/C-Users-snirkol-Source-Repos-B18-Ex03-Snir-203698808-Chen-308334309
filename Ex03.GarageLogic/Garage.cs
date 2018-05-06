@@ -174,5 +174,41 @@ namespace Ex03.GarageLogic
 
             return o_NumberOfDoors;
         }
+
+        public static eTypeOfDriversLicense castTypeOfDriversLicense(string i_TypeOfDriversLicense)
+        {
+            eTypeOfDriversLicense o_TypeOfDriversLicense;
+            
+            switch (i_TypeOfDriversLicense.ToLower())
+            {
+                case "a":
+                    {
+                        o_TypeOfDriversLicense  = eTypeOfDriversLicense.A;
+                        break;
+                    }
+                case "a1":
+                    {
+                        o_TypeOfDriversLicense = eTypeOfDriversLicense.A1;
+                        break;
+                    }
+
+                case "b1":
+                    {
+                        o_TypeOfDriversLicense = eTypeOfDriversLicense.B1;
+                        break;
+                    }
+                case "b2":
+                    {
+                        o_TypeOfDriversLicense = eTypeOfDriversLicense.B2;
+                        break;
+                    }
+                default:
+                    {
+                        throw new InvalidCastException();
+                    }
+            }
+
+            return o_TypeOfDriversLicense;
+        }
     }
 }
